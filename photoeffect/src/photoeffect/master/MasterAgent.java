@@ -17,6 +17,7 @@ import java.awt.image.BufferedImage;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -30,11 +31,11 @@ import photoeffect.lambda.Lambda;
 @Description("This agent requires a clock service and a blur service.")
 @Agent
 @RequiredServices({
-        @RequiredService(name = "clockservice", type = IClockService.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_PLATFORM)),
-        @RequiredService(name = "mirrorservice", type = IEffectMirror.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_PLATFORM)),
-        @RequiredService(name = "blurservice", type = IEffectBlur.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_PLATFORM)),
-        @RequiredService(name = "othermirrorservice", type = IEffectOtherMirror.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_PLATFORM)),
-        @RequiredService(name = "otherblurservice", type = IEffectOtherBlur.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_PLATFORM)) })
+        @RequiredService(name = "clockservice", type = IClockService.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_GLOBAL)),
+        @RequiredService(name = "mirrorservice", type = IEffectMirror.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_GLOBAL)),
+        @RequiredService(name = "blurservice", type = IEffectBlur.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_GLOBAL)),
+        @RequiredService(name = "othermirrorservice", type = IEffectOtherMirror.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_GLOBAL)),
+        @RequiredService(name = "otherblurservice", type = IEffectOtherBlur.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_GLOBAL)) })
 public class MasterAgent
 {
     @Agent
@@ -86,21 +87,43 @@ public class MasterAgent
         for (String serviceName : new String[] { "blurservice", "mirrorservice", "otherblurservice",
                 "othermirrorservice" })
         {
-
-            System.out.println(System.nanoTime() + " calling " + serviceName);
-
-            IImageEffect service = (IImageEffect) agent.getServiceContainer().getRequiredService(serviceName).get(sus);
-
-            System.out.println(System.nanoTime() + " modifying image");
-
-            img = service.modifyImage(img).get(sus);
-
-            System.out.println(System.nanoTime() + " done modifying image");
-
+            img = callService(img, sus, serviceName);
         }
 
+        if (new Random().nextBoolean())
+        {
+            System.out.println("entering 2xblur 1xotherblur");
+            for (String serviceName : new String[] { "blurservice", "blurservice", "otherblurservice" })
+            {
+                img = callService(img, sus, serviceName);
+            }
+        }
+        else
+        {
+            System.out.println("entering 1xmirror 1xothermirror");
+            for (String serviceName : new String[] { "mirrorservice", "othermirrorservice" })
+            {
+                img = callService(img, sus, serviceName);
+            }
+        }
+
+        System.out.println("DONE");
         _gui.changeImage(img);
 
+    }
+
+    private BufferedImage callService(BufferedImage img, ThreadSuspendable sus, String serviceName)
+    {
+        System.out.println(System.nanoTime() + " calling " + serviceName);
+
+        IImageEffect service = (IImageEffect) agent.getServiceContainer().getRequiredService(serviceName).get(sus);
+
+        System.out.println(System.nanoTime() + " modifying image");
+
+        img = service.modifyImage(img).get(sus);
+
+        System.out.println(System.nanoTime() + " done modifying image");
+        return img;
     }
 
     /**

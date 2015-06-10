@@ -18,8 +18,8 @@ public class EffectOtherMirrorService implements IEffectOtherMirror
     @Override
     public Future<BufferedImage> modifyImage(BufferedImage image)
     {
-        System.out.println("  IN EffectMirrorService");
-        for (long i = 0; i < 15000000000L; i++)
+        System.out.println("  IN EffectOtherMirrorService");
+        for (long i = 0; i < 10000000000L; i++)
         {
             // approx 5secs
         }
@@ -34,7 +34,7 @@ public class EffectOtherMirrorService implements IEffectOtherMirror
         BufferedImage modifiedImage = image.getSubimage(0, 0, image.getWidth(), image.getHeight());
         ato.filter(image, modifiedImage);
 
-        for (long i = 0; i < 15000000000L; i++)
+        for (long i = 0; i < 10000000000L; i++)
         {
             // approx 5secs
         }

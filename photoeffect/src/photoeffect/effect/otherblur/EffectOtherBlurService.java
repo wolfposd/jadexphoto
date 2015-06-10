@@ -21,7 +21,7 @@ public class EffectOtherBlurService implements IEffectOtherBlur
     public Future<BufferedImage> modifyImage(BufferedImage image)
     {
         System.out.println("  IN EffectOtherBlurService");
-        for (long i = 0; i < 15000000000L; i++)
+        for (long i = 0; i < 10000000000L; i++)
         {
             // approx 5secs
         }
@@ -37,7 +37,7 @@ public class EffectOtherBlurService implements IEffectOtherBlur
             op.filter(image, blurredImage);
         }
 
-        for (long i = 0; i < 15000000000L; i++)
+        for (long i = 0; i < 10000000000L; i++)
         {
             // approx 5secs
         }
