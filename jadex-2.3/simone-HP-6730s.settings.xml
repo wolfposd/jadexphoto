@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<p0:properties xmlns:p0="http://jadex.sourceforge.net/jadexconf" __ID="0">
+	<p0:properties __ID="1" type="StarterServicePanel">
+		<p0:properties __ID="2" type="mpanel">
+			<p0:property __ID="3" type="tree"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<p0:TreeProperties xmlns:p0="typeinfo:jadex.base.gui.filetree" __ID="0">
+	<selectedNode>
+		<p0:NodePath __ID="1" entry="0">
+			<path>
+				<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="2" __len="5">
+					<entries>
+						<p1:String __ID="3">jadex</p1:String>
+						<p1:String __ID="4">micro</p1:String>
+						<p1:String __ID="5">testcases</p1:String>
+						<p1:String __ID="6">terminate</p1:String>
+						<p1:String __ID="7">IntermediateInvokerAgent.class</p1:String>
+					</entries>
+				</p1:String__1>
+			</path>
+		</p0:NodePath>
+	</selectedNode>
+	<expandedNodes>
+		<p0:NodePath__1 __ID="8" __len="17">
+			<entries>
+				<p0:NodePath __ID="9" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="10" __len="4">
+							<entries>
+								<p1:String __ID="11">jadex</p1:String>
+								<p1:String __ID="12">micro</p1:String>
+								<p1:String __ID="13">examples</p1:String>
+								<p1:String __ID="14">messagequeue</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="15" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="16" __len="4">
+							<entries>
+								<p1:String __ID="17">jadex</p1:String>
+								<p1:String __ID="18">micro</p1:String>
+								<p1:String __ID="19">testcases</p1:String>
+								<p1:String __ID="20">blocking</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="21" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="22" __len="4">
+							<entries>
+								<p1:String __ID="23">jadex</p1:String>
+								<p1:String __ID="24">micro</p1:String>
+								<p1:String __ID="25">testcases</p1:String>
+								<p1:String __ID="26">autoterminate</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="27" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="28" __len="3">
+							<entries>
+								<p1:String __ID="29">jadex</p1:String>
+								<p1:String __ID="30">micro</p1:String>
+								<p1:String __ID="31">testcases</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="32" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="33" __len="4">
+							<entries>
+								<p1:String __ID="34">jadex</p1:String>
+								<p1:String __ID="35">micro</p1:String>
+								<p1:String __ID="36">testcases</p1:String>
+								<p1:String __ID="37">semiautomatic</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="38" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="39" __len="4">
+							<entries>
+								<p1:String __ID="40">jadex</p1:String>
+								<p1:String __ID="41">micro</p1:String>
+								<p1:String __ID="42">testcases</p1:String>
+								<p1:String __ID="43">multiinvoke</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="44" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="45" __len="2">
+							<entries>
+								<p1:String __ID="46">jadex</p1:String>
+								<p1:String __ID="47">micro</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="48" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="49" __len="4">
+							<entries>
+								<p1:String __ID="50">jadex</p1:String>
+								<p1:String __ID="51">micro</p1:String>
+								<p1:String __ID="52">examples</p1:String>
+								<p1:String __ID="53">ping</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="54" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="55" __len="4">
+							<entries>
+								<p1:String __ID="56">jadex</p1:String>
+								<p1:String __ID="57">micro</p1:String>
+								<p1:String __ID="58">testcases</p1:String>
+								<p1:String __ID="59">prepostconditions</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="60" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="61" __len="3">
+							<entries>
+								<p1:String __ID="62">jadex</p1:String>
+								<p1:String __ID="63">micro</p1:String>
+								<p1:String __ID="64">examples</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="65" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="66" __len="4">
+							<entries>
+								<p1:String __ID="67">jadex</p1:String>
+								<p1:String __ID="68">micro</p1:String>
+								<p1:String __ID="69">testcases</p1:String>
+								<p1:String __ID="70">intermediate</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="71" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="72" __len="4">
+							<entries>
+								<p1:String __ID="73">jadex</p1:String>
+								<p1:String __ID="74">micro</p1:String>
+								<p1:String __ID="75">testcases</p1:String>
+								<p1:String __ID="76">authenticate</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="77" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="78" __len="4">
+							<entries>
+								<p1:String __ID="79">jadex</p1:String>
+								<p1:String __ID="80">micro</p1:String>
+								<p1:String __ID="81">testcases</p1:String>
+								<p1:String __ID="82">terminate</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="83" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="84" __len="3">
+							<entries>
+								<p1:String __ID="85">jadex</p1:String>
+								<p1:String __ID="86">micro</p1:String>
+								<p1:String __ID="87">showrooms</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="88" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="89" __len="1">
+							<entries>
+								<p1:String __ID="90">jadex</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="91" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="92" __len="0"></p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="93" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="94" __len="3">
+							<entries>
+								<p1:String __ID="95">jadex</p1:String>
+								<p1:String __ID="96">micro</p1:String>
+								<p1:String __ID="97">quickstart</p1:String>
+							</entries>
+						</p1:String__1>
+					</path>
+				</p0:NodePath>
+			</entries>
+		</p0:NodePath__1>
+	</expandedNodes>
+	<rootPathEntries>
+		<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="98" __len="1">
+			<entries>
+				<p1:String __ID="99">lib/jadex-applications-micro-2.3.jar</p1:String>
+			</entries>
+		</p1:String__1>
+	</rootPathEntries>
+</p0:TreeProperties>
+]]></p0:property>
+			<p0:properties __ID="4" type="mic">
+				<p0:property __ID="5" type="BPMN Process">true</p0:property>
+				<p0:property __ID="6" type="Application">true</p0:property>
+				<p0:property __ID="7" type="Component">true</p0:property>
+				<p0:property __ID="8" type="Micro Agent">true</p0:property>
+			</p0:properties>
+		</p0:properties>
+		<p0:properties __ID="9" type="spanel">
+			<p0:property __ID="10" type="model">jar:file:lib/jadex-applications-micro-2.3.jar!/jadex/micro/testcases/terminate/IntermediateInvokerAgent.class</p0:property>
+			<p0:property __ID="11" type="ridurl">file:lib/jadex-applications-micro-2.3.jar</p0:property>
+			<p0:property __ID="12" type="globalrid"></p0:property>
+			<p0:property __ID="13" type="startsuspended">false</p0:property>
+			<p0:property __ID="14" type="autogenerate">false</p0:property>
+			<p0:property __ID="15" type="number">1</p0:property>
+			<p0:property __ID="16" type="name">IntermediateInvoker</p0:property>
+		</p0:properties>
+	</p0:properties>
+	<p0:properties __ID="17" type="chat">
+		<p0:property __ID="18" type="nickname">user_cd3</p0:property>
+	</p0:properties>
+	<p0:properties __ID="19" type="awa">
+		<p0:property __ID="20" type="fast">true</p0:property>
+		<p0:property __ID="21" type="autocreate">true</p0:property>
+		<p0:property __ID="22" type="autodelete">true</p0:property>
+	</p0:properties>
+	<p0:properties __ID="23" type="simulationservice">
+		<p0:property __ID="24" type="executing">true</p0:property>
+	</p0:properties>
+	<p0:properties __ID="25" type="securityservice">
+		<p0:property __ID="26" type="validityduration">327680</p0:property>
+		<p0:property __ID="27" type="usepass">true</p0:property>
+		<p0:property __ID="28" type="password">a0260d68-1f0</p0:property>
+		<p0:property __ID="29" type="selected_mechanism">0</p0:property>
+		<p0:property __ID="30" type="trustedlan">false</p0:property>
+		<p0:property __ID="31" type="storepath">./keystore</p0:property>
+		<p0:property __ID="32" type="storepass">keystore</p0:property>
+		<p0:property __ID="33" type="keypass">keystore</p0:property>
+		<p0:property __ID="34" type="selmech">0</p0:property>
+		<p0:properties __ID="35" type="DecentralizedAcquisitionMechanism">
+			<p0:property __ID="36" type="responses">1</p0:property>
+		</p0:properties>
+		<p0:properties __ID="37" type="TTPAcquisitionMechanism">
+			<p0:property __ID="38" type="verify">true</p0:property>
+		</p0:properties>
+	</p0:properties>
+	<p0:properties __ID="39" type="clockservice">
+		<p0:property __ID="40" type="type">system</p0:property>
+		<p0:property __ID="41" type="delta">100</p0:property>
+		<p0:property __ID="42" type="dilation">1.0</p0:property>
+	</p0:properties>
+	<p0:properties __ID="43" type="library_service">
+		<p0:properties __ID="44" type="link">
+			<p0:properties __ID="45" type="a"></p0:properties>
+			<p0:properties __ID="46" type="b">
+				<p0:property __ID="47" type="lid_url">file:lib/jadex-applications-micro-2.3.jar</p0:property>
+			</p0:properties>
+		</p0:properties>
+	</p0:properties>
+</p0:properties>

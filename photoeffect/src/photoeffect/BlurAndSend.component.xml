@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Blur and send are my component. -->
+<componenttype xmlns="http://jadex.sourceforge.net/jadex"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://jadex.sourceforge.net/jadex
+                      http://jadex.sourceforge.net/jadex-component-2.1.xsd"
+  name="BlurAndSend" package="photoeffect">
+
+	
+	<componenttypes>
+		<componenttype name="masteragent" filename="photoeffect.master.MasterAgent.class"/>
+		<componenttype name="blureffectagent" filename="photoeffect.effect.blur.BlurEffectAgent.class"/>
+		<componenttype name="blureffectagent1" filename="photoeffect.effect.blur1.BlurEffectAgent1.class"/>
+		<componenttype name="sendagent" filename="photoeffect.send.SendAgent.class"/>
+	</componenttypes>
+	
+	<configurations>
+		<configuration name="Blur and Send Service">
+			<components>
+				<component type="sendagent"/>
+				<component type="blureffectagent"/>
+				<component type="masteragent"/>
+			</components>
+		</configuration>
+	</configurations>
+	
+</componenttype>
