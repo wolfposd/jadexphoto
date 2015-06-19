@@ -17,7 +17,7 @@ public class FLog
         {
 
             FileHandler filehandler;
-            filehandler = new FileHandler("./" + name + "_" + System.currentTimeMillis() + ".txt");
+            filehandler = new FileHandler("./" + name + "_" + System.currentTimeMillis() + ".log");
             _logger.addHandler(filehandler);
             filehandler.setFormatter(new MyFormatter());
 
