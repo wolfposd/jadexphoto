@@ -75,7 +75,12 @@ public class MasterAgent
         }
         else
         {
-            blurImageBlockingCall(_gui.currentImagePanel.getImage());
+            for (int i = 1; i <= 10; i++)
+            {
+                System.out.println("run " + i + "/10");
+                blurImageBlockingCall(_gui.currentImagePanel.getImage());
+            }
+
             System.out.println("DONE DONE DONE!");
         }
     }
