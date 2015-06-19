@@ -12,6 +12,7 @@ import photoeffect.effect.blur.EffectBlurAgent;
 import photoeffect.effect.mirror.EffectMirrorAgent;
 import photoeffect.effect.otherblur.EffectOtherBlurAgent;
 import photoeffect.effect.othermirror.EffectOtherMirrorAgent;
+import photoeffect.filelog.FLog;
 
 public class Main2ServicesOnly
 {
@@ -29,7 +30,7 @@ public class Main2ServicesOnly
         IComponentManagementService cms = SServiceProvider.getService(platform.getServiceProvider(),
                 IComponentManagementService.class, RequiredServiceInfo.SCOPE_GLOBAL).get(sus);
 
-        // Starting Agents:
+        FLog.initLog("Main2ServicesOnly");
 
         IComponentIdentifier cid;
         for (Class<?> agentclass : new Class<?>[] { EffectBlurAgent.class, EffectOtherBlurAgent.class,
@@ -40,6 +41,9 @@ public class Main2ServicesOnly
             System.out.println("Started " + agentclass.getSimpleName() + " component: " + cid);
 
         }
+
+        // set to null if for-loops in services should be disabled
+        System.setProperty("loop", "yes");
 
     }
 }

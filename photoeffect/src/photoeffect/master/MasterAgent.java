@@ -26,6 +26,7 @@ import photoeffect.effect.blur.IEffectBlur;
 import photoeffect.effect.mirror.IEffectMirror;
 import photoeffect.effect.otherblur.IEffectOtherBlur;
 import photoeffect.effect.othermirror.IEffectOtherMirror;
+import photoeffect.filelog.FLog;
 import photoeffect.lambda.Lambda;
 
 @Description("This agent requires a clock service and a blur service.")
@@ -50,6 +51,7 @@ public class MasterAgent
         IFuture<IClockService> clockservice = agent.getServiceContainer().getRequiredService("clockservice");
         clockservice.addResultListener(new DefaultResultListener<IClockService>()
         {
+            @Override
             public void resultAvailable(IClockService cs)
             {
                 System.out.println("Master service starts at: " + new Date(cs.getTime()));
@@ -74,6 +76,7 @@ public class MasterAgent
         else
         {
             blurImageBlockingCall(_gui.currentImagePanel.getImage());
+            System.out.println("DONE DONE DONE!");
         }
     }
 
@@ -107,22 +110,23 @@ public class MasterAgent
             }
         }
 
-        System.out.println("DONE");
+        System.out.println("changing image in gui");
         _gui.changeImage(img);
 
     }
 
     private BufferedImage callService(BufferedImage img, ThreadSuspendable sus, String serviceName)
     {
-        System.out.println(System.nanoTime() + " calling " + serviceName);
+        FLog.log(this.getClass().getSimpleName() + ";calling " + serviceName);
 
         IImageEffect service = (IImageEffect) agent.getServiceContainer().getRequiredService(serviceName).get(sus);
 
-        System.out.println(System.nanoTime() + " modifying image");
+        FLog.log(this.getClass().getSimpleName() + ";modifiying image on " + serviceName);
 
         img = service.modifyImage(img).get(sus);
 
-        System.out.println(System.nanoTime() + " done modifying image");
+        FLog.log(this.getClass().getSimpleName() + ";returning image from " + serviceName);
+
         return img;
     }
 

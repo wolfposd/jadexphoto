@@ -9,20 +9,22 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
+import photoeffect.effect.ALoggingService;
+
 @Service
-public class EffectOtherMirrorService implements IEffectOtherMirror
+public class EffectOtherMirrorService extends ALoggingService implements IEffectOtherMirror
 {
     @ServiceComponent
     protected IInternalAccess agent;
 
     @Override
-    public Future<BufferedImage> modifyImage(BufferedImage image)
+    public Future<BufferedImage> modifyImageInternal(BufferedImage image)
     {
-        System.out.println("  IN EffectOtherMirrorService");
-        for (long i = 0; i < 10000000000L; i++)
-        {
-            // approx 5secs
-        }
+        if (System.getProperty("loop") != null)
+            for (long i = 0; i < 10000000000L; i++)
+            {
+                // approx 5secs
+            }
         Future<BufferedImage> ret = new Future<>();
 
         AffineTransform at = new AffineTransform();
@@ -34,10 +36,11 @@ public class EffectOtherMirrorService implements IEffectOtherMirror
         BufferedImage modifiedImage = image.getSubimage(0, 0, image.getWidth(), image.getHeight());
         ato.filter(image, modifiedImage);
 
-        for (long i = 0; i < 10000000000L; i++)
-        {
-            // approx 5secs
-        }
+        if (System.getProperty("loop") != null)
+            for (long i = 0; i < 10000000000L; i++)
+            {
+                // approx 5secs
+            }
 
         ret.setResult(modifiedImage);
         return ret;

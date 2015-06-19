@@ -12,6 +12,7 @@ import photoeffect.effect.blur.EffectBlurAgent;
 import photoeffect.effect.mirror.EffectMirrorAgent;
 import photoeffect.effect.otherblur.EffectOtherBlurAgent;
 import photoeffect.effect.othermirror.EffectOtherMirrorAgent;
+import photoeffect.filelog.FLog;
 import photoeffect.master.MasterAgent;
 
 public class Main
@@ -31,6 +32,8 @@ public class Main
         IComponentManagementService cms = SServiceProvider.getService(platform.getServiceProvider(),
                 IComponentManagementService.class, RequiredServiceInfo.SCOPE_PLATFORM).get(sus);
 
+        FLog.initLog("AgentAndServices");
+
         // Starting Agents:
 
         IComponentIdentifier cid;
@@ -42,6 +45,9 @@ public class Main
             System.out.println("Started " + agentclass.getSimpleName() + " component: " + cid);
 
         }
+
+        // set to null if for-loops in services should be disabled
+        System.setProperty("loop", "yes");
 
     }
 

@@ -8,6 +8,7 @@ import jadex.bridge.service.search.SServiceProvider;
 import jadex.bridge.service.types.cms.IComponentManagementService;
 import jadex.commons.future.IFuture;
 import jadex.commons.future.ThreadSuspendable;
+import photoeffect.filelog.FLog;
 import photoeffect.master.MasterAgent;
 
 public class Main2MainAgentOnly
@@ -28,14 +29,17 @@ public class Main2MainAgentOnly
 
         // Starting Agents:
 
+        FLog.initLog("Main2MainAgentOnly");
+
         IComponentIdentifier cid;
         for (Class<?> agentclass : new Class<?>[] { MasterAgent.class })
         {
-
             cid = cms.createComponent(null, agentclass.getName() + ".class", null, null).get(sus);
             System.out.println("Started " + agentclass.getSimpleName() + " component: " + cid);
 
         }
 
+        // set to null if for-loops in services should be disabled
+        System.setProperty("loop", "yes");
     }
 }

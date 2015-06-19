@@ -10,17 +10,18 @@ import java.awt.image.BufferedImageOp;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 
+import photoeffect.effect.ALoggingService;
+
 @Service
-public class EffectBlurService implements IEffectBlur
+public class EffectBlurService extends ALoggingService implements IEffectBlur
 {
 
     @ServiceComponent
     protected IInternalAccess agent;
 
     @Override
-    public Future<BufferedImage> modifyImage(BufferedImage image)
+    public Future<BufferedImage> modifyImageInternal(BufferedImage image)
     {
-        System.out.println("  IN EffectBlurService");
         Future<BufferedImage> ret = new Future<>();
 
         BufferedImage blurredImage = image.getSubimage(0, 0, image.getWidth(), image.getHeight());
@@ -33,10 +34,11 @@ public class EffectBlurService implements IEffectBlur
             op.filter(image, blurredImage);
         }
 
-        for (long i = 0; i < 30000000000L; i++)
-        {
-            // approx 10secs
-        }
+        if (System.getProperty("loop") != null)
+            for (long i = 0; i < 30000000000L; i++)
+            {
+                // approx 10secs
+            }
 
         ret.setResult(blurredImage);
         return ret;
