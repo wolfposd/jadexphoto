@@ -60,6 +60,7 @@ class DisplayPanel extends JPanel
         setPreferredSize(new Dimension(512, 384));
     }
 
+    @Override
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
@@ -67,8 +68,7 @@ class DisplayPanel extends JPanel
         if (backgroundImage == null)
             g.drawString("CHOOSE AN IMAGE FROM THE LIST", 50, 200);
         else
-            g.drawImage(backgroundImage, 0, 0, 512, 384, this);
-        // g.drawImage(backgroundImage, 0, 0, this);
+            g.drawImage(backgroundImage, 0, 0, this.getWidth(), this.getHeight(), this);
     }
 
 }
