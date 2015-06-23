@@ -22,9 +22,11 @@ import javax.swing.JOptionPane;
 
 import measure.generic.IGenericWorkload;
 import photoeffect.effect.blur.IEffectBlur;
+import photoeffect.effect.enlarge.IEffectEnlarge;
 import photoeffect.effect.mirror.IEffectMirror;
 import photoeffect.effect.otherblur.IEffectOtherBlur;
 import photoeffect.effect.othermirror.IEffectOtherMirror;
+import photoeffect.effect.shrink.IEffectShrink;
 import photoeffect.filelog.FLog;
 import photoeffect.lambda.Lambda;
 
@@ -33,6 +35,8 @@ import photoeffect.lambda.Lambda;
 @RequiredServices({
         @RequiredService(name = "clockservice", type = IClockService.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_GLOBAL)),
         @RequiredService(name = "mirrorservice", type = IEffectMirror.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_GLOBAL)),
+        @RequiredService(name = "shrinkservice", type = IEffectShrink.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_GLOBAL)),
+        @RequiredService(name = "enlargeservice", type = IEffectEnlarge.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_GLOBAL)),
         @RequiredService(name = "blurservice", type = IEffectBlur.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_GLOBAL)),
         @RequiredService(name = "othermirrorservice", type = IEffectOtherMirror.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_GLOBAL)),
         @RequiredService(name = "otherblurservice", type = IEffectOtherBlur.class, binding = @Binding(scope = RequiredServiceInfo.SCOPE_GLOBAL)) })
@@ -86,7 +90,7 @@ public class MasterAgent
         ThreadSuspendable sus = new ThreadSuspendable();
 
         for (String serviceName : new String[] { "blurservice", "mirrorservice", "otherblurservice",
-                "othermirrorservice" })
+                "othermirrorservice", "shrinkservice", "enlargeservice" })
         {
             img = callService(img, sus, serviceName);
         }

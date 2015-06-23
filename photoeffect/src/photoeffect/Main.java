@@ -9,9 +9,11 @@ import jadex.bridge.service.types.cms.IComponentManagementService;
 import jadex.commons.future.IFuture;
 import jadex.commons.future.ThreadSuspendable;
 import photoeffect.effect.blur.EffectBlurAgent;
+import photoeffect.effect.enlarge.EffectEnlargeAgent;
 import photoeffect.effect.mirror.EffectMirrorAgent;
 import photoeffect.effect.otherblur.EffectOtherBlurAgent;
 import photoeffect.effect.othermirror.EffectOtherMirrorAgent;
+import photoeffect.effect.shrink.EffectShrinkAgent;
 import photoeffect.filelog.FLog;
 import photoeffect.master.MasterAgent;
 
@@ -38,7 +40,8 @@ public class Main
 
         IComponentIdentifier cid;
         for (Class<?> agentclass : new Class<?>[] { EffectBlurAgent.class, EffectOtherBlurAgent.class,
-                EffectMirrorAgent.class, EffectOtherMirrorAgent.class, MasterAgent.class })
+                EffectMirrorAgent.class, EffectOtherMirrorAgent.class, EffectShrinkAgent.class,
+                EffectEnlargeAgent.class, MasterAgent.class })
         {
 
             cid = cms.createComponent(null, agentclass.getName() + ".class", null, null).get(sus);

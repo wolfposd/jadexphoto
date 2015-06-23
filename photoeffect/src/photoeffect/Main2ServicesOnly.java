@@ -9,9 +9,11 @@ import jadex.bridge.service.types.cms.IComponentManagementService;
 import jadex.commons.future.IFuture;
 import jadex.commons.future.ThreadSuspendable;
 import photoeffect.effect.blur.EffectBlurAgent;
+import photoeffect.effect.enlarge.EffectEnlargeAgent;
 import photoeffect.effect.mirror.EffectMirrorAgent;
 import photoeffect.effect.otherblur.EffectOtherBlurAgent;
 import photoeffect.effect.othermirror.EffectOtherMirrorAgent;
+import photoeffect.effect.shrink.EffectShrinkAgent;
 import photoeffect.filelog.FLog;
 
 public class Main2ServicesOnly
@@ -34,7 +36,8 @@ public class Main2ServicesOnly
 
         IComponentIdentifier cid;
         for (Class<?> agentclass : new Class<?>[] { EffectBlurAgent.class, EffectOtherBlurAgent.class,
-                EffectMirrorAgent.class, EffectOtherMirrorAgent.class })
+                EffectMirrorAgent.class, EffectOtherMirrorAgent.class, EffectShrinkAgent.class,
+                EffectEnlargeAgent.class })
         {
 
             cid = cms.createComponent(null, agentclass.getName() + ".class", null, null).get(sus);
@@ -42,7 +45,7 @@ public class Main2ServicesOnly
 
         }
 
-        // set to null if for-loops in services should be disabled
+        // comment if for-loops in services should be disabled
         System.setProperty("loop", "yes");
 
     }
