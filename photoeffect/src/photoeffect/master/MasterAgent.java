@@ -2,7 +2,6 @@ package photoeffect.master;
 
 import jadex.bridge.service.RequiredServiceInfo;
 import jadex.bridge.service.types.clock.IClockService;
-import jadex.commons.future.DefaultResultListener;
 import jadex.commons.future.IFuture;
 import jadex.commons.future.ThreadSuspendable;
 import jadex.micro.MicroAgent;
@@ -21,7 +20,7 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
-import photoeffect.effect.IImageEffect;
+import measure.generic.IGenericWorkload;
 import photoeffect.effect.blur.IEffectBlur;
 import photoeffect.effect.mirror.IEffectMirror;
 import photoeffect.effect.otherblur.IEffectOtherBlur;
@@ -48,16 +47,10 @@ public class MasterAgent
     @AgentBody
     public void executeBody()
     {
-        IFuture<IClockService> clockservice = agent.getServiceContainer().getRequiredService("clockservice");
-        clockservice.addResultListener(new DefaultResultListener<IClockService>()
-        {
-            @Override
-            public void resultAvailable(IClockService cs)
-            {
-                System.out.println("Master service starts at: " + new Date(cs.getTime()));
-
-            }
-        });
+        IFuture<IClockService> futureclockservice = agent.getServiceContainer().getRequiredService("clockservice");
+        futureclockservice.addResultListener(Lambda.result(clockservice -> {
+            System.out.println("Master service starts at: " + new Date(clockservice.getTime()));
+        }));
 
         _gui = new MasterAgentGui(agent.getAgentName(), e -> agent.killComponent());
         _gui.applyButton.addActionListener(e -> applyButtonPressed());
@@ -124,49 +117,17 @@ public class MasterAgent
     {
         FLog.log(this.getClass().getSimpleName() + ";calling " + serviceName);
 
-        IImageEffect service = (IImageEffect) agent.getServiceContainer().getRequiredService(serviceName).get(sus);
+        @SuppressWarnings("unchecked")
+        IGenericWorkload<BufferedImage> service = (IGenericWorkload<BufferedImage>) agent.getServiceContainer()
+                .getRequiredService(serviceName).get(sus);
 
         FLog.log(this.getClass().getSimpleName() + ";modifiying image on " + serviceName);
 
-        img = service.modifyImage(img).get(sus);
+        img = service.modifyObject(img).get(sus);
 
         FLog.log(this.getClass().getSimpleName() + ";returning image from " + serviceName);
 
         return img;
     }
 
-    /**
-     * Async version
-     */
-    public void blurImageNotBlockingCall(final BufferedImage image)
-    {
-
-        IFuture<IImageEffect> futureService = agent.getServiceContainer().getRequiredService("mirrorservice");
-
-        futureService.addResultListener(Lambda.result(service -> {
-
-            System.out.println((System.currentTimeMillis() / 1000) + " calling mirror");
-            IFuture<BufferedImage> futureImage = service.modifyImage(image);
-
-            futureImage.addResultListener(Lambda.result(mirroredImage -> {
-                System.out.println((System.currentTimeMillis() / 1000) + " changing image");
-                _gui.changeImage(mirroredImage);
-
-                System.out.println("Calling blurservice");
-
-                IFuture<IEffectBlur> futServ2 = agent.getServiceContainer().getRequiredService("blurservice");
-                futServ2.addResultListener(Lambda.result(service2 -> {
-                    IFuture<BufferedImage> futureImage2 = service2.modifyImage(mirroredImage);
-                    futureImage2.addResultListener(Lambda.result(blurredImage -> {
-                        System.out.println((System.currentTimeMillis() / 1000) + " changing image");
-                        _gui.changeImage(blurredImage);
-
-                    }));
-
-                }));
-
-            }));
-        }));
-
-    }
 }

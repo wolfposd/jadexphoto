@@ -1,8 +1,10 @@
 package photoeffect.filelog;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Formatter;
+import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
@@ -16,8 +18,14 @@ public class FLog
         try
         {
 
+            File logFolder = new File("./logs/");
+            if (!logFolder.exists())
+            {
+                logFolder.mkdir();
+            }
+
             FileHandler filehandler;
-            filehandler = new FileHandler("./" + name + "_" + System.currentTimeMillis() + ".log");
+            filehandler = new FileHandler("./logs/" + name + "_" + System.currentTimeMillis() + ".log");
             _logger.addHandler(filehandler);
             filehandler.setFormatter(new MyFormatter());
 
@@ -26,6 +34,8 @@ public class FLog
         {
             e.printStackTrace();
         }
+
+        log("beginning log");
 
     }
 
@@ -43,6 +53,17 @@ public class FLog
             return record.getMillis() + ";" + record.getThreadID() + ";" + record.getMessage() + "\n";
         }
 
+    }
+
+    @Override
+    protected void finalize() throws Throwable
+    {
+        super.finalize();
+
+        for (Handler h : _logger.getHandlers())
+        {
+            h.close();
+        }
     }
 
 }

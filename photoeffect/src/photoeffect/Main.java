@@ -46,8 +46,8 @@ public class Main
 
         }
 
-        // set to null if for-loops in services should be disabled
-        System.setProperty("loop", "yes");
+        // comment if for-loops in services should be disabled
+        // System.setProperty("loop", "true");
 
     }
 

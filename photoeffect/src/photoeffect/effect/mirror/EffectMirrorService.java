@@ -3,25 +3,22 @@ package photoeffect.effect.mirror;
 import jadex.bridge.IInternalAccess;
 import jadex.bridge.service.annotation.Service;
 import jadex.bridge.service.annotation.ServiceComponent;
-import jadex.commons.future.Future;
 
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
-import photoeffect.effect.ALoggingService;
+import measure.generic.AbstractGenericProfiler;
 
 @Service
-public class EffectMirrorService extends ALoggingService implements IEffectMirror
+public class EffectMirrorService extends AbstractGenericProfiler<BufferedImage> implements IEffectMirror
 {
     @ServiceComponent
     protected IInternalAccess agent;
 
     @Override
-    public Future<BufferedImage> modifyImageInternal(BufferedImage image)
+    protected BufferedImage internalModifyObject(BufferedImage image)
     {
-        Future<BufferedImage> ret = new Future<>();
-
         AffineTransform at = new AffineTransform();
         at.concatenate(AffineTransform.getScaleInstance(1, -1));
         at.concatenate(AffineTransform.getTranslateInstance(0, -image.getHeight()));
@@ -36,9 +33,7 @@ public class EffectMirrorService extends ALoggingService implements IEffectMirro
             {
                 // approx 10secs
             }
-
-        ret.setResult(modifiedImage);
-        return ret;
+        return modifiedImage;
     }
 
 }

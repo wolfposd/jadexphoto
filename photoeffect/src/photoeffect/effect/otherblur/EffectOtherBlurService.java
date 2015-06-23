@@ -3,32 +3,29 @@ package photoeffect.effect.otherblur;
 import jadex.bridge.IInternalAccess;
 import jadex.bridge.service.annotation.Service;
 import jadex.bridge.service.annotation.ServiceComponent;
-import jadex.commons.future.Future;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.BufferedImageOp;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 
-import photoeffect.effect.ALoggingService;
+import measure.generic.AbstractGenericProfiler;
 
 @Service
-public class EffectOtherBlurService extends ALoggingService implements IEffectOtherBlur
+public class EffectOtherBlurService extends AbstractGenericProfiler<BufferedImage> implements IEffectOtherBlur
 {
 
     @ServiceComponent
     protected IInternalAccess agent;
 
     @Override
-    public Future<BufferedImage> modifyImageInternal(BufferedImage image)
+    protected BufferedImage internalModifyObject(BufferedImage image)
     {
         if (System.getProperty("loop") != null)
             for (long i = 0; i < 10000000000L; i++)
             {
                 // approx 5secs
             }
-
-        Future<BufferedImage> ret = new Future<>();
 
         BufferedImage blurredImage = image.getSubimage(0, 0, image.getWidth(), image.getHeight());
 
@@ -46,8 +43,7 @@ public class EffectOtherBlurService extends ALoggingService implements IEffectOt
                 // approx 5secs
             }
 
-        ret.setResult(blurredImage);
-        return ret;
+        return blurredImage;
     }
 
 }

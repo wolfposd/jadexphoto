@@ -1,8 +1,10 @@
 package photoeffect.effect.blur;
 
-import photoeffect.effect.IImageEffect;
+import java.awt.image.BufferedImage;
 
-public interface IEffectBlur extends IImageEffect
+import measure.generic.IGenericWorkload;
+
+public interface IEffectBlur extends IGenericWorkload<BufferedImage>
 {
 
 }

@@ -1,8 +1,10 @@
 package photoeffect.effect.mirror;
 
-import photoeffect.effect.IImageEffect;
+import java.awt.image.BufferedImage;
 
-public interface IEffectMirror extends IImageEffect
+import measure.generic.IGenericWorkload;
+
+public interface IEffectMirror extends IGenericWorkload<BufferedImage>
 {
 
 }

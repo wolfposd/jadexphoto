@@ -1,8 +1,10 @@
 package photoeffect.effect.otherblur;
 
-import photoeffect.effect.IImageEffect;
+import java.awt.image.BufferedImage;
 
-public interface IEffectOtherBlur extends IImageEffect
+import measure.generic.IGenericWorkload;
+
+public interface IEffectOtherBlur extends IGenericWorkload<BufferedImage>
 {
 
 }
