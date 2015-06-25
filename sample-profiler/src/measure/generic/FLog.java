@@ -1,4 +1,4 @@
-package photoeffect.filelog;
+package measure.generic;
 
 import java.io.File;
 import java.io.IOException;

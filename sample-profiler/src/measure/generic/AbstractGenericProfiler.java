@@ -1,8 +1,8 @@
 package measure.generic;
 
 import jadex.commons.future.Future;
+import jadex.commons.future.IFuture;
 import objectexplorer.MemoryMeasurer;
-import photoeffect.filelog.FLog;
 
 /**
  * 
@@ -17,7 +17,7 @@ public abstract class AbstractGenericProfiler<T> implements IGenericWorkload<T>
 {
 
     @Override
-    public Future<T> modifyObject(T someobject)
+    public IFuture<T> modifyObject(T someobject)
     {
 
         // erst loggen
@@ -37,6 +37,18 @@ public abstract class AbstractGenericProfiler<T> implements IGenericWorkload<T>
         return returnval;
     }
 
+    /**
+     * Die interne Methode, die vom Service implementiert werden muss. Diese
+     * Methode wird ge-wrappt vom AbstractGenericProfiler. Dieser implementiert
+     * die Methode des Service-Interfaces mit zusätzlichen Log-Funktionen und
+     * reicht die "echte" Implementation mithilfe dieser Methode weiter. <br>
+     * <br>
+     * Es müssen keine Future Objekte an dieser Stelle erzeugt werden, da sie in
+     * der Wrapper-Klasse automatisch erzeugt werden.
+     * 
+     * @param someobject
+     * @return result
+     */
     protected abstract T internalModifyObject(T someobject);
 
 }
