@@ -32,10 +32,3 @@ Runtime Configurations:
 Um Objektgrößen zu messen muss als VM-Argument folgendes eintragen werden:
 
 -javaagent:libs/object-explorer.jar
-
-
-
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
