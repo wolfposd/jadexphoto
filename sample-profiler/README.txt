@@ -1,16 +1,16 @@
-== Jadex Beispiel für generisches logging == 
+<h1> Jadex Beispiel für generisches logging </h1>
 gemessen werden Übertragungszeit und Übertragungsgröße
 
 
 
 
 
-= Was passiert im Beispiel? =
+<h2> Was passiert im Beispiel? </h2>
 
 Der SampleAgent übergibt ein Objekt an den SampleService zur Modifikation.
 Der SampleService verändert das Objekt und schiebt es zurück an den SampleAgent.
 
-= Was sagt das Log? =
+<h2> Was sagt das Log? </h2>
 
 TIMESTEAM ; THREADID ; CLASS; CUSTOM MESSAGE
 1435232847814;1;FLog;beginning log                           // start des Logfiles
@@ -24,7 +24,7 @@ TIMESTEAM ; THREADID ; CLASS; CUSTOM MESSAGE
 
 
 
-= Beachten =
+<h2> Beachten </h2>
 Runtime Configurations:
 Um Objektgrößen zu messen muss als VM-Argument folgendes eintragen werden:
 -javaagent:libs/object-explorer.jar
